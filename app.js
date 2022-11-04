@@ -40,7 +40,7 @@ app.use("/api/v1/users", userRouter);
 app.use("/api/v1/jobs", jobsRouter);
 // other Middleware
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./public", "index.html"));
+  res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
 });
 app.use(NotFoundMiddleware);
 app.use(errorHandlerMiddleware);
