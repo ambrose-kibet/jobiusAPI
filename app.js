@@ -1,6 +1,7 @@
 const express = require("express");
 require("dotenv").config();
 require("express-async-errors");
+const path = require("path");
 const app = express();
 // import security middleware
 const cors = require("cors");
@@ -39,7 +40,7 @@ app.use("/api/v1/users", userRouter);
 app.use("/api/v1/jobs", jobsRouter);
 // other Middleware
 app.get("*", (req, res) => {
-  res.sendFile("./public/index.html");
+  res.sendFile(path.resolve(__dirname, "./public", "index.html"));
 });
 app.use(NotFoundMiddleware);
 app.use(errorHandlerMiddleware);
