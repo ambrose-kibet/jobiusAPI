@@ -12,14 +12,14 @@ const attachResToCookies = ({ res, payload, refreshToken }) => {
   const LongerLifeTime = 1000 * 60 * 60 * 24 * 30;
   res.cookie("accessToken", accessTokenjwt, {
     signed: true,
-    sameSite: false,
+
     httpOnly: true,
     secure: process.env.NODE_ENV === "production" ? true : false,
     expires: new Date(Date.now() + oneDay),
   });
   res.cookie("refreshToken", refreshTokenjwt, {
     signed: true,
-    sameSite: false,
+
     httpOnly: true,
     expires: new Date(Date.now() + LongerLifeTime),
     secure: process.env.NODE_ENV === "production" ? true : false,
