@@ -28,9 +28,9 @@ app.use(cors({ origin: "https://jobius.netlify.app", credentials: true }));
 app.use(helmet());
 app.use(xss());
 app.use(mongoSanitize());
-app.use(rateLimiter({ windowMs: 15 * 60 * 1000, max: 100 }));
-// middleware
 
+// middleware
+app.use(express.static(path.resolve(__dirname, "./client/build")));
 app.use(cookieParser(process.env.JWT_SECRET));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -39,6 +39,7 @@ app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/jobs", jobsRouter);
 // other Middleware
+
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
 });
