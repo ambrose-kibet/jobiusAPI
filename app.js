@@ -12,7 +12,6 @@ const rateLimiter = require("express-rate-limit");
 //  import middlewware
 const cookieParser = require("cookie-parser");
 const connectDB = require("./Connect/connectDB");
-const morgan = require("morgan");
 
 // import Routers
 const authRouter = require("./Routes/authRouter");
@@ -30,7 +29,7 @@ app.use(xss());
 app.use(mongoSanitize());
 app.use(rateLimiter({ windowMs: 15 * 60 * 1000, max: 100 }));
 // middleware
-app.use(morgan("tiny"));
+
 app.use(cookieParser(process.env.JWT_SECRET));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
