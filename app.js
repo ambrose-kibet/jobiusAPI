@@ -38,7 +38,9 @@ app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/jobs", jobsRouter);
 // other Middleware
-
+app.get("*", (req, res) => {
+  res.sendFile("./public/index.html");
+});
 app.use(NotFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
