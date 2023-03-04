@@ -22,7 +22,7 @@ const registerUser = async (req, res) => {
     verificationToken,
   });
 
-  const origin = "http://localhost:3000";
+  const origin = "https://jobius.onrender.com";
 
   await sendVerificationEmail({
     email: user.email,
@@ -111,7 +111,7 @@ const forgotPassword = async (req, res) => {
   const user = await User.findOne({ email });
   if (user) {
     const tenMinutes = 1000 * 60 * 10;
-    const origin = "http://localhost:3000";
+    const origin = "https://jobius.onrender.com";
     const passwordResetToken = crypto.randomBytes(40).toString("hex");
     sendPasswordResetEmailEmail({
       email: user.email,
